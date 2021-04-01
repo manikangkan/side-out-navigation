@@ -1,0 +1,88 @@
+$bg: rgb(24, 27, 32);
+$bg-activator: rgb(20, 22, 27);
+$nav: rgb(32, 36, 44);
+$nav-hover: rgb(38, 42, 51);
+$bg-hover: #6e46c5;
+
+@mixin dg {
+  display: grid;
+  place-content: center;
+}
+
+@mixin df {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat";
+}
+
+body {
+  height: 100vh;
+  background: $bg;
+  @include dg;
+}
+
+svg {
+  width: 7rem;
+  height: 7rem;
+  padding: 2rem;
+
+  &:hover {
+    * {
+      stroke-width: 2.5;
+      stroke: #fff;
+    }
+  }
+}
+
+header {
+  @include df;
+  .activator {
+    border-radius: 1rem;
+    cursor: pointer;
+    border-radius: 1rem 0 0 1rem;
+
+    * {
+      stroke: #fff;
+    }
+  }
+}
+
+nav {
+  > * {
+    height: 7rem;
+  }
+
+  background: $nav;
+  border-radius: 0 1rem 1rem 0;
+  clip-path: ellipse(80% 80% at -100% 50%);
+  overflow: hidden;
+
+  ul {
+    display: flex;
+    list-style-type: none;
+
+    li {
+      cursor: pointer;
+
+      &:hover {
+        background: $nav-hover;
+      }
+
+      svg {
+        opacity: 0;
+        transform: translateX(-0.5rem);
+
+        * {
+          stroke: $bg-hover;
+        }
+      }
+    }
+  }
+}
